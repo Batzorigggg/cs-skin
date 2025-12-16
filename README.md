@@ -10,3 +10,17 @@ cs-skin
 └─ src
 
 ```
+
+```
+cs-skin
+├─ README.md
+├─ data
+│  └─ db.js
+├─ frontend
+│  └─ index.html
+└─ src
+   ├─ index.js
+   ├─ package-lock.json
+   └─ package.json
+
+```
