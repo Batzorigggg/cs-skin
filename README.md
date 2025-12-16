@@ -41,3 +41,20 @@ cs-skin
       └─ user.js
 
 ```
+```
+cs-skin
+├─ README.md
+├─ data
+│  └─ db.js
+├─ frontend
+│  └─ index.html
+├─ package-lock.json
+├─ package.json
+└─ src
+   ├─ controllers
+   │  └─ index.js
+   ├─ index.js
+   └─ services
+      └─ user.js
+
+```
