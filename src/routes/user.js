@@ -2,9 +2,9 @@ import { Router } from "express";
 import {
   addSkinController,
   deleteSkinController,
-  loginUser,
   createUser,
 } from "../controllers/user.js";
+import { login } from "../controllers/auth.js";
 import { verifyJWT } from "../jwtMiddleware.js";
 
 export const userRouters = new Router();
@@ -17,8 +17,8 @@ export const checkRole = (allowedRoles) => {
     next();
   };
 };
-userRouters.post("/create", createUser);
-userRouters.post("/login", verifyJWT, loginUser);
+userRouters.post("/create", verifyJWT, createUser);
+userRouters.post("/login", login);
 //userRouters.get("/skins", homePage);
-userRouters.delete("/confirm", deleteSkinController);
-userRouters.post("/confirm", addSkinController);
+userRouters.delete("/confirm", verifyJWT, deleteSkinController);
+userRouters.post("/confirm", verifyJWT, addSkinController);
