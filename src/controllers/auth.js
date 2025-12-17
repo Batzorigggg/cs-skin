@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
-import { getUserByEmailService } from "../services/user.js";
+import { getUserBySteamurlService } from "../services/user.js";
 
 const SECRET_KEY = process.env.JWT_SECRET;
 
@@ -8,7 +8,7 @@ export const login = async (req, res) => {
   const { steamurl, password } = req.body;
 
   // 1. User байгаа эсэх
-  const user = await getUserByEmailService(steamurl);
+  const user = await getUserBySteamurlService(steamurl);
   if (!user) {
     return res.status(401).json({ message: "Invalid email or password" });
   }
@@ -50,7 +50,6 @@ export const verifyJWT = (req, res, next) => {
 
     // 🔹 token-оос email авах
     req.steamurl = decoded.steamurl;
-    req._id = decoded.id;
 
     next();
   } catch (err) {

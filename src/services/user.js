@@ -1,7 +1,7 @@
 import { db } from "../../data/db.js";
 import bcrypt from "bcrypt";
 
-export const getUserByEmailService = async (steamurl) => {
+export const getUserBySteamurlService = async (steamurl) => {
   const res = await db.query("SELECT * FROM users WHERE steamurl = $1", [
     steamurl,
   ]);
