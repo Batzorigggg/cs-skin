@@ -9,4 +9,12 @@ export const deleteSkinController = async (req, res) => {
   const { id } = req.body;
   const skin = await deleteSkinService(id);
   res.json(skin);
+import { loginUserService } from "../services/index.js";
+
+export const loginUser = async (req, res) => {
+  const { steamurl, password } = req.body;
+
+  const user = await loginUserService(steamurl, password);
+
+  res.json(user);
 };
