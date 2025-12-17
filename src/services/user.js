@@ -11,8 +11,7 @@ export const deleteSkinService = async (id) => {
 
 export const addSkinService = async (skinname, price) => {
   const response = await db.query(
-    `INSERT into skins (price, skinname) VALUES ($1,$2) RETURNING *`,
-    [skinname, price]
+    `INSERT into skins(skinname, price) VALUES('${skinname}','${price}') RETURNING *`
   );
   return response.rows[0];
 };
