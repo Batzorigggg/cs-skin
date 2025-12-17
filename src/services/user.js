@@ -1,6 +1,23 @@
 import { db } from "../../data/db.js";
+import bcrypt from "bcrypt";
 
-// export const login = async () => {};
+export const getUserByEmailService = async (steamurl) => {
+  const res = await db.query("SELECT * FROM users WHERE steamurl = $1", [
+    steamurl,
+  ]);
+  return res.rows[0];
+};
+
+export const createUserService = async (steamurl, password) => {
+  const hashedPassword = await bcrypt.hash(password, 10);
+
+  const response = await db.query(
+    `INSERT INTO users (steamurl, password) VALUES ($1, $2) RETURNING *`,
+    [steamurl, hashedPassword]
+  );
+  return response.rows[0];
+};
+
 export const loginUserService = async (steamurl, password) => {
   const response = await db.query(
     `SELECT * FROM users WHERE steamurl = $1 AND password = $2`,
@@ -8,8 +25,6 @@ export const loginUserService = async (steamurl, password) => {
   );
   return response.rows[0];
 };
-
-//select *from users where email ={email} and passwod ={passwod}
 
 export const deleteSkinService = async (id) => {
   const response = await db.query(
@@ -25,5 +40,3 @@ export const addSkinService = async (skinname, price) => {
   );
   return response.rows[0];
 };
-
-// export const confirm = async () => {};

@@ -8,12 +8,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
- skinaddDelete
 app.use("/user", userRouters);
 
 await connectDb();
 
 app.listen(3000, () => {
-
   console.log("Server running on port 3000");
 });
