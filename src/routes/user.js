@@ -3,6 +3,7 @@ import {
   addSkinController,
   deleteSkinController,
   loginUser,
+  rentSkinController,
   createUser,
 } from "../controllers/user.js";
 import { login } from "../controllers/auth.js";
@@ -23,3 +24,4 @@ userRouters.get("/login", login);
 //userRouters.get("/skins", homePage);
 userRouters.delete("/confirm", deleteSkinController);
 userRouters.post("/confirm", addSkinController);
+userRouters.post("/rentskin", verifyJWT, rentSkinController);
