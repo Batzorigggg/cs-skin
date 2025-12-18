@@ -4,6 +4,7 @@ import {
   deleteSkinController,
   loginUser,
   createUser,
+  rentController,
 } from "../controllers/user.js";
 import { verifyJWT } from "../jwtMiddleware.js";
 
@@ -18,7 +19,7 @@ export const checkRole = (allowedRoles) => {
   };
 };
 userRouters.post("/create", createUser);
-userRouters.post("/login", verifyJWT, loginUser);
-//userRouters.get("/skins", homePage);
+userRouters.post("/login", loginUser);
+userRouters.get("/skins", verifyJWT, rentController);
 userRouters.delete("/confirm", deleteSkinController);
 userRouters.post("/confirm", addSkinController);

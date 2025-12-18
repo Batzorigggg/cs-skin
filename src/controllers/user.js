@@ -3,6 +3,7 @@ import {
   deleteSkinService,
   loginUserService,
   createUserService,
+  rentSkinService,
 } from "../services/user.js";
 
 export const createUser = async (req, res) => {
@@ -30,4 +31,10 @@ export const loginUser = async (req, res) => {
   const user = await loginUserService(steamurl, password);
 
   res.json(user);
+};
+
+export const rentController = async (req, res) => {
+  const { a, b } = req.body;
+  const rent = await rentSkinService(a, b);
+  res.json(rent);
 };

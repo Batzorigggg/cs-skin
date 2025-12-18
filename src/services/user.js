@@ -39,3 +39,16 @@ export const addSkinService = async (skinname, price) => {
   );
   return response.rows[0];
 };
+export const rentSkinService = async (a, b) => {
+  const response =
+    await db.query(`INSERT INTO rentedskins (user_id, skin_id, startdate, expiredate)
+SELECT
+    u.id,
+    s.id,
+    CURRENT_DATE,
+    CURRENT_DATE + INTERVAL '1 week'
+FROM users u
+CROSS JOIN skins s
+WHERE u.id = ${a}
+  AND s.id = ${b};`);
+};
