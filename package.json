@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/liy4r/academy-node#readme",
   "dependencies": {
+    "@apollo/server": "^5.2.0",
     "apollo-server-express": "^3.13.0",
     "body-parser": "^2.2.1",
     "cookie-parser": "^1.4.7",
@@ -27,7 +28,7 @@
     "express": "^4.22.1",
     "graphql": "^16.12.0",
     "mongodb": "^7.0.0",
-    "mongoose": "^9.1.1",
+    "mongoose": "^9.1.2",
     "pg": "^8.16.3"
   },
   "devDependencies": {
